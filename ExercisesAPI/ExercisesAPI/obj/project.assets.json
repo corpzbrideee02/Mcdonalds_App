@@ -7579,11 +7579,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\d_cor\\ExercisesAPI\\ExercisesAPI\\ExercisesAPI.csproj",
+      "projectUniqueName": "C:\\Users\\d_cor\\Mcdonalds_App\\ExercisesAPI\\ExercisesAPI\\ExercisesAPI.csproj",
       "projectName": "ExercisesAPI",
-      "projectPath": "C:\\Users\\d_cor\\ExercisesAPI\\ExercisesAPI\\ExercisesAPI.csproj",
+      "projectPath": "C:\\Users\\d_cor\\Mcdonalds_App\\ExercisesAPI\\ExercisesAPI\\ExercisesAPI.csproj",
       "packagesPath": "C:\\Users\\d_cor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\d_cor\\ExercisesAPI\\ExercisesAPI\\obj\\",
+      "outputPath": "C:\\Users\\d_cor\\Mcdonalds_App\\ExercisesAPI\\ExercisesAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\d_cor\\AppData\\Roaming\\NuGet\\NuGet.Config",

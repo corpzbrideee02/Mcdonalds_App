@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3r9JRRDHm8PodXuU1CyCMLNEFRfnCowY2ZTAEA+Yy63DbiUU/lJXD0Mn7nDhOcqafsk8pqLCeJmPMg/qomqT4Q==",
+  "dgSpecHash": "WDxOU7KmxcF5GIrP7dMGiHG6bk/UdojmtQ+fo+fuh7dBArxeRvqP+muuMuhd3qoWuDFbRJY/jeEib6Yf+/ksJA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\d_cor\\ExercisesAPI\\ExercisesAPI\\ExercisesAPI.csproj",
+  "projectFilePath": "C:\\Users\\d_cor\\Mcdonalds_App\\ExercisesAPI\\ExercisesAPI\\ExercisesAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\d_cor\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\d_cor\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

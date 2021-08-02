@@ -56,3 +56,19 @@
   margin-top: 3vh;
   margin-left: 25vw;
 }
+
+.tray-head {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 2vh;
+  width: 98vw;
+  font-size: x-large;
+  color: var(--primary-color);
+}
+.tray-total-head {
+  font-weight: bold;
+  margin-top: 2vh;
+  font-size: large;
+  color: var(--primary-color);
+  text-align: center;
+}

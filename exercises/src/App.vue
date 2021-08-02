@@ -29,6 +29,7 @@ export default {
     const menuitems = ref([
       { label: "Home", to: "/" },
       { label: "Categories", to: "/categories" },
+      { label: "Saved Trays", to: "/trays" },
       { label: "Register", to: "/register" },
       { label: "Login", to: "/login" },
       { label: "Logout", to: "/logout" },

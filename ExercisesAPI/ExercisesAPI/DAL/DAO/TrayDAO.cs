@@ -79,6 +79,39 @@ namespace ExercisesAPI.DAL.DAO
             return trayId;
         }
 
+        public async Task<List<Tray>> GetAll(int id)
+        {
+            return await _db.Trays.Where(tray => tray.UserId == id).ToListAsync<Tray>();
+        }
+
+        public async Task<List<TrayDetailsHelper>> GetTrayDetails(int tid, string email)
+        {
+            User user = _db.Users.FirstOrDefault(user => user.Email == email);
+            List<TrayDetailsHelper> allDetails = new List<TrayDetailsHelper>();
+            // LINQ way of doing INNER JOINS
+            var results = from t in _db.Trays
+                          join ti in _db.TrayItems on t.Id equals ti.TrayId
+                          join mi in _db.MenuItems on ti.MenuItemId equals mi.Id
+                          where (t.UserId == user.Id && t.Id == tid)
+                          select new TrayDetailsHelper
+                          {
+                              TrayId = t.Id,
+                              UserId = user.Id,
+                              TotalCalories = t.TotalCalories,
+                              TotalCarbs = t.TotalCarbs,
+                              TotalFat = t.TotalFat,
+                              TotalCholesterol = t.TotalCholesterol,
+                              TotalFibre = t.TotalFibre,
+                              TotalProtein = t.TotalProtein,
+                              TotalSalt = t.TotalSalt,
+                              Description = mi.Description,
+                              MenuItemId = ti.MenuItemId,
+                              Qty = ti.Qty,
+                              DateCreated = t.DateCreated.ToString("yyyy/MM/dd - hh:mm tt")
+                          };
+            allDetails = await results.ToListAsync<TrayDetailsHelper>();
+            return allDetails;
+        }
 
     }
 }

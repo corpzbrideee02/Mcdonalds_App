@@ -45,5 +45,23 @@ namespace ExercisesAPI.Controllers
             }
             return retVal;
         }
+
+        [Route("{email}")]
+        public async Task<ActionResult<List<Tray>>> List(string email)
+        {
+            List<Tray> trays = new List<Tray>();
+            UserDAO uDao = new UserDAO(_ctx);
+            User trayOwner = await uDao.GetByEmail(email);
+            TrayDAO tDao = new TrayDAO(_ctx);
+            trays = await tDao.GetAll(trayOwner.Id);
+            return trays;
+        }
+
+        [Route("{trayid}/{email}")]
+        public async Task<ActionResult<List<TrayDetailsHelper>>> GetTrayDetails(int trayid, string email)
+        {
+            TrayDAO dao = new TrayDAO(_ctx);
+            return await dao.GetTrayDetails(trayid, email);
+        }
     }
 }
