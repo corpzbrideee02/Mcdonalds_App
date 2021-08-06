@@ -3,14 +3,16 @@
     <div class="heading">Data Utility</div>
     <div class="status">{{ state.status }}</div>
     <Button
-      label="Reset Tables"
+      label="Load Categories"
       @click="resetTables"
       class="p-button-outlined"
-    />
+    />&nbsp;
+    <Button label="Load Stores" @click="loadStores" class="p-button-outlined" />
   </div>
 </template>
 <script>
 import { reactive } from "vue";
+import { fetcher } from "../util/apiutil";
 export default {
   setup() {
     let state = reactive({
@@ -20,8 +22,18 @@ export default {
       let url = "https://localhost:44371/api/Data";
       try {
         state.status = "resetting tables ...";
-        let response = await fetch(`${url}`);
-        state.status = await response.json();
+        let payload = await fetcher("Data");
+        state.status = payload;
+      } catch (err) {
+        console.log(err);
+        state.status = `Error has occured: ${err.message}`;
+      }
+    };
+    const loadStores = async () => {
+      try {
+        state.status = "loading store data ...";
+        let payload = await fetcher("Data/loadstores");
+        state.status = payload;
       } catch (err) {
         console.log(err);
         state.status = `Error has occured: ${err.message}`;
@@ -29,6 +41,7 @@ export default {
     };
     return {
       resetTables,
+      loadStores,
       state,
     };
   },

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using ExercisesAPI.DAL;
+using ExercisesAPI.DAL.DAO;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Net.Http;
-using ExercisesAPI.DAL;
 using System.Text.Json;
-
+using System.Threading.Tasks;
 namespace ExercisesAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -15,10 +13,11 @@ namespace ExercisesAPI.Controllers
     public class DataController : ControllerBase
     {
         AppDbContext _ctx;
-
-        public DataController(AppDbContext context) //injected here
+        IWebHostEnvironment _env;
+        public DataController(AppDbContext context, IWebHostEnvironment env) // injected here
         {
             _ctx = context;
+            _env = env;
         }
         public async Task<ActionResult<String>> Index()
         {
@@ -35,7 +34,6 @@ namespace ExercisesAPI.Controllers
             }
             return JsonSerializer.Serialize(payload);
         }
-
         private async Task<String> getMenuItemJsonFromWebAsync()
         {
             string url = "https://raw.githubusercontent.com/elauersen/info3067/master/mcdonalds.json";
@@ -44,6 +42,21 @@ namespace ExercisesAPI.Controllers
             var result = await response.Content.ReadAsStringAsync();
             return result;
         }
-
+        [Route("loadstores")]
+        public async Task<ActionResult<String>> LoadStores()
+        {
+            string payload = "";
+            StoreDAO dao = new StoreDAO(_ctx);
+            bool storesLoaded = await dao.LoadStoresFromFile(_env.WebRootPath);
+            try
+            {
+                payload = storesLoaded ? "stores loaded successfully" : "problem loading store data";
+            }
+            catch (Exception ex)
+            {
+                payload = ex.Message;
+            }
+            return JsonSerializer.Serialize(payload);
+        }
     }
 }

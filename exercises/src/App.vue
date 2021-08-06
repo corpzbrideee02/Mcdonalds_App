@@ -18,7 +18,7 @@
         <Button icon="pi pi-bars" @click="toggle" />
       </template>
     </Toolbar>
-    
+
     <router-view />
   </div>
 </template>
@@ -33,6 +33,9 @@ export default {
       { label: "Register", to: "/register" },
       { label: "Login", to: "/login" },
       { label: "Logout", to: "/logout" },
+      { label: "Map", to: "/map" },
+      { label: "Data Utils", to: "/utility" },
+      { label: "Stores", to: "/store" },
     ]);
     const menu = ref();
     const toggle = (event) => {

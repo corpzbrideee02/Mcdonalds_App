@@ -10,5 +10,6 @@ namespace ExercisesAPI.DAL
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<TrayItem> TrayItems { get; set; }
         public virtual DbSet<Tray> Trays { get; set; }
+        public virtual DbSet<Store> Stores { get; set; }
     }
 }
